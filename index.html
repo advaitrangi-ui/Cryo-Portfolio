@@ -316,5 +316,57 @@
             }
         });
     </script>
+<div style="max-width: 800px; margin: 50px auto; padding: 20px;">
+    <canvas id="growthChart"></canvas>
+</div>
+
+<script>
+    const ctx = document.getElementById('growthChart').getContext('2d');
+    const growthChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'], // Timeline
+            datasets: [{
+                label: 'V1 Users (Flatline)',
+                data: [1200, 1300, 1350, 1300, 1250, 1200, 1100, 1000],
+                borderColor: '#FF5F56', // Red for the "Problem"
+                borderWidth: 2,
+                tension: 0.4
+            },
+            {
+                label: 'V2 Users (The Pivot)',
+                data: [0, 0, 0, 500, 2000, 8000, 45000, 100000],
+                borderColor: '#00E5FF', // Cyan for the "Solution"
+                backgroundColor: 'rgba(0, 229, 255, 0.1)', // Glow effect
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: { color: '#ffffff' } // White text for dark mode
+                },
+                title: {
+                    display: true,
+                    text: 'The "Hard Ceiling" vs. V2 Breakout',
+                    color: '#888888'
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: '#888888' },
+                    grid: { color: '#333333' }
+                },
+                x: {
+                    ticks: { color: '#888888' },
+                    grid: { color: '#333333' }
+                }
+            }
+        }
+    });
+</script>
 </body>
 </html>
