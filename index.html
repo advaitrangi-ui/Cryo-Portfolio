@@ -3,454 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cryo Mix: Product & Strategy Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <title>Adi Ranganathan | Portfolio</title>
     <style>
-        :root {
-            --bg: #050505;
-            --surface: #111111;
-            --surface-2: #1a1a1a;
-            --primary: #00E5FF;
-            --primary-dim: rgba(0, 229, 255, 0.1);
-            --text: #ffffff;
-            --text-muted: #888888;
-            --success: #00FF94;
-            --danger: #FF5F56;
-            --accent-purple: #A855F7;
-        }
-
+        /* --- GLOBAL STYLES --- */
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #0a0a0a; /* Deep dark background */
+            color: #e0e0e0; /* Soft white text */
             line-height: 1.6;
         }
 
-        /* NAVIGATION */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(5, 5, 5, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #222;
-            z-index: 1000;
-            padding: 15px 0;
+        a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
         }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-        }
-        .nav-logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; }
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover { color: var(--primary); }
-
-        /* LAYOUT UTILS */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .section { padding: 80px 0; border-bottom: 1px solid #1a1a1a; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
-        
-        h1, h2, h3, h4 { margin: 0; }
-        h2 { font-size: 2.5rem; margin-bottom: 20px; letter-spacing: -0.03em; }
-        h3 { font-size: 1.5rem; margin-bottom: 10px; color: #eee; }
-        p { color: #ccc; margin-bottom: 20px; }
-        
-        .tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 15px;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            background: var(--primary-dim);
+            padding: 20px 40px;
         }
 
-        /* HERO */
-        .hero {
-            padding-top: 180px;
-            padding-bottom: 100px;
-            text-align: center;
-            background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #050505 70%);
-        }
-        .hero h1 { font-size: 5rem; line-height: 1; margin-bottom: 30px; background: linear-gradient(#fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
-        .stat-bar { display: flex; justify-content: center; gap: 50px; margin-top: 50px; flex-wrap: wrap; }
-        .stat-item strong { display: block; font-size: 2.5rem; color: var(--primary); }
-        .stat-item span { color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-
-        /* IMAGE STYLES */
-        .img-box {
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #333;
-            transition: transform 0.3s;
-            background: #000;
-            position: relative;
-            margin-bottom: 20px;
-        }
-        .img-box img { width: 100%; display: block; }
-        
-        .img-box.legacy {
-            border-color: #333;
-            filter: grayscale(100%);
-            opacity: 0.7;
-        }
-        .img-box.legacy:hover { filter: grayscale(0%); opacity: 1; }
-
-        .label-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
+        .nav-logo {
             font-weight: bold;
-            z-index: 10;
-            text-transform: uppercase;
+            font-size: 1.2rem;
         }
 
-        /* TERMINAL WINDOW FOR CODE */
-        .terminal-window {
-            background: #0d0d0d;
-            border-radius: 8px;
-            border: 1px solid #333;
-            font-family: 'JetBrains Mono', monospace;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-size: 0.9rem;
         }
-        .terminal-header { display: flex; gap: 8px; margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 10px; }
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .red { background: #ff5f56; }
-        .yellow { background: #ffbd2e; }
-        .green { background: #27c93f; }
 
+        /* --- HERO SECTION (YOUR PROFILE) --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover; /* Ensures the image doesn't stretch */
+            border-radius: 50%; /* Circle shape */
+            border: 3px solid #333;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #888;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* --- PROJECT SECTION --- */
+        .project-container {
+            max-width: 1000px; /* Increased width for larger images */
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .project-header {
+            margin-bottom: 40px;
+        }
+
+        .project-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 700px;
+            margin-bottom: 30px;
+            border-left: 3px solid #444;
+            padding-left: 20px;
+        }
+
+        /* --- INTERFACE IMAGES (SIDE BY SIDE & LARGE) --- */
+        .interface-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 30px; /* Space between images */
+            margin-top: 40px;
+        }
+
+        .interface-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid #222;
+            transition: transform 0.3s ease;
+        }
+
+        .interface-item img:hover {
+            transform: scale(1.02); /* Subtle zoom on hover */
+        }
+
+        /* Mobile Responsive: Stack images on small screens */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .grid-2 { grid-template-columns: 1fr; }
-            .stat-bar { gap: 20px; }
+            .interface-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-container">
-            <div class="nav-logo">CRYO MIX <span style="color:var(--primary)">//</span> PORTFOLIO</div>
-            <div class="nav-links">
-                <a href="#product">Product Architecture</a>
-                <a href="#engineering">AI & RAG</a>
-                <a href="#bizdev">Business Strategy</a>
-            </div>
+        <div class="nav-logo">Cryo + Mix</div>
+        <div class="nav-links">
+            <a href="#">AI Tools</a>
+            <a href="#">Pricing</a>
+            <a href="#">About</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container">
-            <div data-aos="fade-up">
-                <span class="tag">Product Lead • Growth Strategist</span>
-                <h1>Building the Future<br>of Audio Intelligence.</h1>
-                <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem;">
-                    From a flatlined MVP to a scaling AI platform. <br>
-                    Bridging <strong>Creative Intent</strong> with <strong>Technical Architecture</strong>.
-                </p>
-                <div class="stat-bar">
-                    <div class="stat-item"><strong>110k+</strong><span>Total Users</span></div>
-                    <div class="stat-item"><strong>$150k</strong><span>ARR (Scaled)</span></div>
-                    <div class="stat-item"><strong>v2</strong><span>Pivot Executed</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <header class="hero">
+        <img src="Adi_focused.jpeg" alt="Adi Ranganathan" class="profile-img">
+        <h1>Adi Ranganathan</h1>
+        <p>Producer & Audio Engineer</p>
+    </header>
 
-    <section id="product" class="section">
-        <div class="container">
-            <span class="tag">01. Visual Architecture</span>
-            <h2>The v2 Pivot: From "Tool" to "Workspace"</h2>
-            <p style="max-width: 700px; margin-bottom: 60px;">
-                The core challenge was retaining power users. V1 was a linear "fire-and-forget" uploader. 
-                V2 introduced a non-linear timeline, granular control, and AI-assisted workflows.
+    <section class="project-container">
+        
+        <div class="project-header">
+            <h2 class="project-title">Interface Overhaul</h2>
+            
+            <p class="project-description">
+                Genre isn't a label. It dictates the mixing algorithm. I designed a new modal to capture this metadata upfront.
             </p>
-            
-            <div class="grid-2" style="margin-bottom: 100px;">
-                <div data-aos="fade-right">
-                    <h3>The Positioning Shift</h3>
-                    <p><strong>Before (V1):</strong> Positioned as a quick-fix utility. "Upload -> Done." The aesthetic was sterile and purely functional.</p>
-                    <p><strong>After (V2):</strong> Positioned as a professional creative environment. "Create -> Refine -> Perfect." Dark mode, sleek typography, and trust signals.</p>
-                </div>
-                <div data-aos="fade-left">
-                    <div class="grid-2" style="gap: 15px;">
-                        <div class="img-box legacy">
-                            <div class="label-badge" style="background:#FF5F56; color:white;">V1 Legacy</div>
-                            <img src="landing_v1.jpg" alt="V1 Landing Page">
-                        </div>
-                        <div class="img-box">
-                            <div class="label-badge" style="background:#00E5FF; color:black;">V2 Current</div>
-                            <img src="landing_v2.jpg" alt="V2 Landing Page">
-                        </div>
-                    </div>
-                </div>
+        </div>
+
+        <div class="interface-grid">
+            <div class="interface-item">
+                <img src="interface_1.png" alt="Interface Design 1">
             </div>
-
-            <div style="background: #0d0d0d; padding: 40px; border-radius: 12px; border: 1px solid #222; margin-bottom: 100px;">
-                <h3 style="text-align: center; margin-bottom: 40px;">The Interface Overhaul</h3>
-                
-                <div class="grid-2" style="align-items: center;">
-                    <div data-aos="fade-right">
-                        <div class="img-box legacy" style="border: 1px dashed #444;">
-                            <div class="label-badge" style="background:#FF5F56; color:white;">V1: The "Ceiling"</div>
-                            <img src="v1_editor.jpg" alt="V1 3-Step Uploader">
-                        </div>
-                        <ul style="color: #888; font-size: 0.9rem; padding-left: 20px;">
-                            <li>Linear 3-step process (Upload > Edit > Download)</li>
-                            <li>No visual feedback on waveform changes</li>
-                            <li>Zero granular control over specific stems</li>
-                        </ul>
-                    </div>
-
-                    <div data-aos="fade-left">
-                        <div class="img-box" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.15); border: 1px solid var(--primary);">
-                            <div class="label-badge" style="background:#00E5FF; color:black;">V2: The Workspace</div>
-                            <img src="v2_editor.jpg" alt="V2 Timeline Editor">
-                        </div>
-                        <ul style="color: #ccc; font-size: 0.9rem; padding-left: 20px;">
-                            <li><strong>Non-Linear Timeline:</strong> Full DAW-style editing capabilities.</li>
-                            <li><strong>Visual Analytics:</strong> Real-time spectral feedback.</li>
-                            <li><strong>New Tools:</strong> Eraser, Slice, and Gain Staging added.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-2">
-                <div data-aos="fade-up">
-                    <span class="tag">UX Flow</span>
-                    <h3>Intent-Based Onboarding</h3>
-                    <p>We realized "Genre" isn't just a label—it dictates the mixing algorithm. I designed a new modal to capture this metadata upfront.</p>
-                    <div class="img-box">
-                        <img src="v2_onboarding.jpg" alt="Genre Selection Modal">
-                    </div>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <span class="tag">Data Collection</span>
-                    <h3>Semantic Questionnaires</h3>
-                    <p>Translating subjective user goals ("Make it punchy") into objective DSP parameters before the mix starts.</p>
-                    <div class="img-box">
-                        <img src="v2_questions.jpg" alt="Sound Selection Questionnaire">
-                    </div>
-                </div>
+            <div class="interface-item">
+                <img src="interface_2.png" alt="Interface Design 2">
             </div>
         </div>
+
     </section>
 
-    <section id="engineering" class="section" style="background: #0a0a0a; border-top: 1px solid #222;">
-        <div class="container">
-            <span class="tag" style="color: var(--accent-purple); border-color: rgba(168, 85, 247, 0.3); background: rgba(168, 85, 247, 0.1);">02. AI & Engineering</span>
-            <h2 style="margin-bottom: 50px;">Nova: The "Mix Assistant" Engine</h2>
-            
-            <div class="grid-2">
-                <div data-aos="fade-right">
-                    <h3>Conversational Mixing</h3>
-                    <p>Users don't always know DSP terms. Nova translates semantic intent ("Make it sound like The Weeknd") into technical execution.</p>
-                    <div class="img-box">
-                        <img src="nova_chat.jpg" alt="Nova AI Chat Interface">
-                    </div>
-                    <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">Fig 1: Natural Language Query Interface</p>
-                </div>
-
-                <div data-aos="fade-left">
-                    <h3>The RAG System (Retrieval-Augmented Generation)</h3>
-                    <p>We upgraded the LLM pipeline to retrieve context from our spectral analysis engine before generating a response.</p>
-                    
-                    <div class="terminal-window">
-                        <div class="terminal-header">
-                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                            <span style="margin-left: 10px; color: #666; font-size: 0.8rem;">system_prompt.py</span>
-                        </div>
-                        <div style="color: #ccc; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6;">
-                            <span style="color: #A855F7;">def</span> <span style="color: #61afef;">analyze_intent</span>(user_query):<br>
-                            &nbsp;&nbsp;<span style="color: #888;"># RAG Retrieval</span><br>
-                            &nbsp;&nbsp;context = vector_db.query(<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;index="sonic_profiles",<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;query=user_query<br>
-                            &nbsp;&nbsp;)<br>
-                            &nbsp;&nbsp;<span style="color: #888;"># Map to DSP Parameters</span><br>
-                            &nbsp;&nbsp;<span style="color: #c678dd;">return</span> {<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #98c379;">"compression_ratio"</span>: context.dynamic_range,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #98c379;">"eq_curve"</span>: context.spectral_tilt<br>
-                            &nbsp;&nbsp;}
-                        </div>
-                    </div>
-                    <div class="img-box" style="margin-top: 20px; border: 1px dashed #444; opacity: 0.8;">
-                        <img src="rag_logic.jpg" alt="RAG Architecture Diagram">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <span class="tag">Feature Infrastructure</span>
-            <h2>Presets, Tools & Ontology</h2>
-            <p style="margin-bottom: 50px;">Expanding the creative palette with community-driven assets and precision tools.</p>
-
-            <div class="grid-2" style="margin-bottom: 80px;">
-                <div data-aos="fade-up">
-                    <div class="img-box">
-                        <img src="preset_browser.jpg" alt="Preset Browser & Community Window">
-                    </div>
-                    <h3 style="margin-top: 20px;">The Preset Ecosystem</h3>
-                    <p>Designed the backend for a scalable "Community Preset" system. This browser allows users to share signal chains, fostering a network effect within the platform.</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="img-box">
-                        <img src="spectral_view.jpg" alt="Spectral Analysis Screen">
-                    </div>
-                    <h3 style="margin-top: 20px;">Spectral Analysis</h3>
-                    <p>Visualizing the mix. We implemented real-time FFT (Fast Fourier Transform) rendering to give users objective visual feedback on their frequency balance.</p>
-                </div>
-            </div>
-
-            <div style="background: #1a1a1a; padding: 40px; border-radius: 12px; border-left: 4px solid var(--primary);">
-                <div class="grid-2" style="align-items: center;">
-                    <div>
-                        <h3>Precision Tooling & Expanded Ontology</h3>
-                        <p><strong>New Tools:</strong> Added the <em>Eraser Tool</em> for transient cleanup and <em>Gain Adjustment</em> for manual leveling.</p>
-                        <p><strong>Genre Expansion:</strong> Updated the backend ontology to support 15+ new sub-genres (e.g., Phonk, Amapiano), requiring distinct mastering chains for each.</p>
-                    </div>
-                    <div class="img-box" style="border: none; background: transparent;">
-                        <img src="new_tools.jpg" alt="Eraser and Adjustment Tools">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="bizdev" class="section" style="background: #0d0d0d;">
-        <div class="container">
-            <span class="tag" style="border-color: var(--success); color: var(--success);">03. Business Strategy</span>
-            <h2>Growth & Market Expansion</h2>
-
-            <div class="grid-2" style="margin-top: 50px; margin-bottom: 80px;">
-                <div data-aos="fade-right">
-                    <h3>B2B White Labeling</h3>
-                    <p>Developed a branded "Mastering Engine" for record labels and distribution platforms. This competes directly with MasterChannel, allowing partners to offer AI services under their own URL.</p>
-                    <div class="img-box" style="border: 1px solid var(--success);">
-                        <img src="b2b_dashboard.jpg" alt="B2B White Label Dashboard">
-                    </div>
-                </div>
-                <div data-aos="fade-left">
-                    <h3>Community-Led Development</h3>
-                    <p>Launched a private Discord beta network. We use this loop to rapid-test features like the "Advanced Settings" before pushing to the main branch.</p>
-                    <div class="img-box">
-                        <img src="discord_beta.jpg" alt="Discord Beta Community">
-                    </div>
-                </div>
-            </div>
-
-            <div style="background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; margin-bottom: 80px;">
-                <div class="grid-2" style="align-items: center;">
-                    <div data-aos="fade-right">
-                        <h3>Contextual Education Strategy</h3>
-                        <p>Instead of a static "Help Center," we built education into the workflow. Interactive modals appear when users hover over advanced controls (like Saturation or EQ).</p>
-                        <p><strong>The Impact:</strong> Reduced support tickets by 40% and increased feature adoption.</p>
-                    </div>
-                    <div data-aos="fade-left">
-                        <div class="img-box" style="margin-bottom: 10px;">
-                            <img src="help_modal.jpg" alt="Educational Modal">
-                        </div>
-                        <div class="img-box" style="opacity: 0.8; transform: scale(0.95);">
-                            <img src="advanced_settings.jpg" alt="Advanced Settings">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-2" style="align-items: center;">
-                <div>
-                    <h3>Market Penetration: Unlocking India</h3>
-                    <p>High traffic, low conversion. My analysis found the <strong>RBI E-Mandate</strong> was blocking card payments.</p>
-                    <p><strong>The Fix:</strong> Pivoted to a UPI-native payment stack via Paddle.</p>
-                    <p style="color: var(--success); font-weight: bold;">Result: Captured 80% of the market segment.</p>
-                </div>
-                <div style="background: #1a1a1a; padding: 20px; border-radius: 8px;">
-                     <canvas id="upiGrowthChart"></canvas>
-                </div>
-            </div>
-
-            <div style="margin-top: 80px;">
-                <h3 style="text-align: center; margin-bottom: 30px;">Revamped Unit Economics</h3>
-                <div class="grid-2" style="align-items: center;">
-                    <div>
-                        <p>Shifted from a strict subscription model to a <strong>Credit-Based System</strong>. This aligned price with value for bedroom producers who don't mix every day.</p>
-                    </div>
-                    <div class="img-box">
-                         <img src="v2_pricing.jpg" alt="Credit Based Pricing Model">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer id="contact" style="padding: 100px 0; text-align: center; border-top: 1px solid #222;">
-        <h2>Ready to Scale?</h2>
-        <p>Let's talk about the future of music tech.</p>
-        <a href="mailto:your-email@gmail.com" style="color: var(--primary); text-decoration: none; font-size: 1.2rem;">Get in Touch &rarr;</a>
-    </footer>
-
-    <script>
-        AOS.init();
-
-        // UPI GROWTH CHART LOGIC
-        const ctxUpi = document.getElementById('upiGrowthChart').getContext('2d');
-        const upiChart = new Chart(ctxUpi, {
-            type: 'bar',
-            data: {
-                labels: ['Credit Cards (Stripe)', 'UPI / AutoPay'],
-                datasets: [{
-                    label: 'Transaction Success Rate',
-                    data: [15, 80],
-                    backgroundColor: ['#333333', '#00FF94'],
-                    borderRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: false },
-                    title: { display: true, text: 'Payment Success Rate: India', color: '#888' }
-                },
-                scales: {
-                    y: { 
-                        beginAtZero: true, 
-                        max: 100,
-                        grid: { color: '#222' },
-                        ticks: { color: '#666', callback: function(value){return value + "%"} }
-                    },
-                    x: { ticks: { color: '#fff' }, grid: { display: false } }
-                }
-            }
-        });
-    </script>
 </body>
 </html>
