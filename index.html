@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cryo Mix: Product & Strategy Portfolio</title>
+    <title>Adi Ranganathan: Product & Engineering Portfolio</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #050505;
@@ -15,8 +15,8 @@
             --surface-2: #1a1a1a;
             --primary: #00E5FF;
             --primary-dim: rgba(0, 229, 255, 0.1);
-            --text: #ffffff;
-            --text-muted: #888888;
+            --text: #e0e0e0;
+            --text-muted: #888;
             --success: #00FF94;
             --danger: #FF5F56;
             --accent-purple: #A855F7;
@@ -29,7 +29,7 @@
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         /* NAVIGATION */
@@ -51,7 +51,7 @@
             align-items: center;
             padding: 0 20px;
         }
-        .nav-logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; }
+        .nav-logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; color: #fff; }
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
@@ -62,17 +62,16 @@
         .nav-links a:hover { color: var(--primary); }
 
         /* LAYOUT UTILS */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .section { padding: 80px 0; border-bottom: 1px solid #1a1a1a; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 100px 0; border-bottom: 1px solid #1a1a1a; }
         
-        /* NEW: TIGHTER GRID FOR LARGER IMAGES */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
         .grid-2-tight { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
 
-        h1, h2, h3, h4 { margin: 0; }
-        h2 { font-size: 2.5rem; margin-bottom: 20px; letter-spacing: -0.03em; }
-        h3 { font-size: 1.5rem; margin-bottom: 10px; color: #eee; }
-        p { color: #ccc; margin-bottom: 20px; }
+        h1, h2, h3, h4 { margin: 0; color: #fff; }
+        h2 { font-size: 2.2rem; margin-bottom: 25px; letter-spacing: -0.03em; line-height: 1.2; }
+        h3 { font-size: 1.4rem; margin-bottom: 15px; font-weight: 600; }
+        p { color: #ccc; margin-bottom: 20px; font-weight: 300; }
         
         .tag {
             display: inline-block;
@@ -81,34 +80,36 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border: 1px solid var(--primary);
             color: var(--primary);
             background: var(--primary-dim);
         }
 
-        /* HERO */
+        /* HERO - PERSONALIZED */
         .hero {
-            padding-top: 140px; /* Reduced slightly to fit profile */
+            padding-top: 140px;
             padding-bottom: 100px;
             text-align: center;
             background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #050505 70%);
         }
         
-        /* NEW: PROFILE HEADER STYLE */
+        /* Sleek Profile Header */
         .profile-header {
             display: inline-flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px 25px 10px 10px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 25px 8px 8px;
             border-radius: 60px;
-            border: 1px solid #333;
+            border: 1px solid #222;
             margin-bottom: 40px;
             backdrop-filter: blur(5px);
+            transition: border-color 0.3s;
         }
+        .profile-header:hover { border-color: #444; }
         .profile-header img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             object-fit: cover;
             margin-right: 15px;
@@ -116,21 +117,37 @@
         }
         .profile-header h4 {
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin: 0;
-            font-weight: 600;
-        }
-        .profile-header span {
-            color: var(--text-muted);
-            font-weight: 300;
-            margin-left: 8px;
-            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        .hero h1 { font-size: 5rem; line-height: 1; margin-bottom: 30px; background: linear-gradient(#fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
-        .stat-bar { display: flex; justify-content: center; gap: 50px; margin-top: 50px; flex-wrap: wrap; }
-        .stat-item strong { display: block; font-size: 2.5rem; color: var(--primary); }
-        .stat-item span { color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .hero h1 { 
+            font-size: 4rem; 
+            line-height: 1.1; 
+            margin-bottom: 30px; 
+            letter-spacing: -1px;
+        }
+        
+        .hero-sub {
+            max-width: 650px; 
+            margin: 0 auto; 
+            font-size: 1.15rem; 
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .context-box {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            border-top: 1px solid #222;
+            padding-top: 40px;
+        }
+        .context-item strong { display: block; font-size: 1.5rem; color: #fff; margin-bottom: 5px; }
+        .context-item span { font-size: 0.85rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
 
         /* IMAGE STYLES */
         .img-box {
@@ -141,13 +158,14 @@
             background: #000;
             position: relative;
             margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
         .img-box img { width: 100%; display: block; }
         
         .img-box.legacy {
             border-color: #333;
             filter: grayscale(100%);
-            opacity: 0.7;
+            opacity: 0.6;
         }
         .img-box.legacy:hover { filter: grayscale(0%); opacity: 1; }
 
@@ -155,12 +173,22 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            padding: 4px 8px;
+            padding: 4px 10px;
             border-radius: 4px;
             font-size: 0.7rem;
-            font-weight: bold;
+            font-weight: 600;
             z-index: 10;
             text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* REFLECTION / STORY BLOCKS */
+        .reflection-block {
+            border-left: 2px solid #333;
+            padding-left: 25px;
+            margin: 30px 0;
+            color: #bbb;
+            font-style: italic;
         }
 
         /* TERMINAL WINDOW FOR CODE */
@@ -180,10 +208,10 @@
         .green { background: #27c93f; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .grid-2, .grid-2-tight { grid-template-columns: 1fr; }
-            .stat-bar { gap: 20px; }
-            .profile-header { padding: 8px 20px 8px 8px; }
+            .hero h1 { font-size: 2.8rem; }
+            .grid-2, .grid-2-tight, .context-box { grid-template-columns: 1fr; }
+            .context-box { gap: 40px; }
+            .section { padding: 60px 0; }
         }
     </style>
 </head>
@@ -191,11 +219,11 @@
 
     <nav>
         <div class="nav-container">
-            <div class="nav-logo">CRYO MIX <span style="color:var(--primary)">//</span> PORTFOLIO</div>
+            <div class="nav-logo">ADI RANGANATHAN</div>
             <div class="nav-links">
-                <a href="#product">Product Architecture</a>
-                <a href="#engineering">AI & RAG</a>
-                <a href="#bizdev">Business Strategy</a>
+                <a href="#product">The Product Pivot</a>
+                <a href="#engineering">Engineering</a>
+                <a href="#bizdev">Growth Strategy</a>
             </div>
         </div>
     </nav>
@@ -206,22 +234,31 @@
                 
                 <div class="profile-header">
                     <img src="Adi_focused.jpeg" alt="Adi Ranganathan">
-                    <div>
-                        <h4>Adi Ranganathan</h4>
-                        </div>
+                    <h4>Adi Ranganathan <span style="color:#666; font-weight:300; margin-left:8px;">// Producer & Audio Engineer</span></h4>
                 </div>
 
-                <div><span class="tag">Product Lead • Growth Strategist</span></div>
+                <h1 style="background: linear-gradient(180deg, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Bridging Creative Intent<br>with Technical Architecture.
+                </h1>
                 
-                <h1>Building the Future<br>of Audio Intelligence.</h1>
-                <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem;">
-                    From a flatlined MVP to a scaling AI platform. <br>
-                    Bridging <strong>Creative Intent</strong> with <strong>Technical Architecture</strong>.
+                <p class="hero-sub">
+                    I’m a producer first, and an engineer second. <br>
+                    This is the story of how I took <strong>Cryo Mix</strong> from a flatlined MVP to a scaling AI platform by prioritizing the artist's workflow over raw technical capability.
                 </p>
-                <div class="stat-bar">
-                    <div class="stat-item"><strong>110k+</strong><span>Total Users</span></div>
-                    <div class="stat-item"><strong>$150k</strong><span>ARR (Scaled)</span></div>
-                    <div class="stat-item"><strong>v2</strong><span>Pivot Executed</span></div>
+
+                <div class="context-box">
+                    <div class="context-item">
+                        <strong>The Role</strong>
+                        <span>Product Lead</span>
+                    </div>
+                    <div class="context-item">
+                        <strong>The Problem</strong>
+                        <span>High Churn / Low Trust</span>
+                    </div>
+                    <div class="context-item">
+                        <strong>The Outcome</strong>
+                        <span>110k+ Users / $150k ARR</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -229,76 +266,69 @@
 
     <section id="product" class="section">
         <div class="container">
-            <span class="tag">01. Visual Architecture</span>
-            <h2>The v2 Pivot: From "Tool" to "Workspace"</h2>
-            <p style="max-width: 700px; margin-bottom: 60px;">
-                The core challenge was retaining power users. V1 was a linear "fire-and-forget" uploader. 
-                V2 introduced a non-linear timeline, granular control, and AI-assisted workflows.
-            </p>
+            <span class="tag">01. The Pivot</span>
+            <h2>Problem: V1 was a Tool, <br>not quite a Workspace.</h2>
             
-            <div class="grid-2" style="margin-bottom: 100px;">
+            <div class="grid-2">
                 <div data-aos="fade-right">
-                    <h3>The Positioning Shift</h3>
-                    <p><strong>Before (V1):</strong> Positioned as a quick-fix utility. "Upload -> Done." The aesthetic was sterile and purely functional.</p>
-                    <p><strong>After (V2):</strong> Positioned as a professional creative environment. "Create -> Refine -> Perfect." Dark mode, sleek typography, and trust signals.</p>
+                    <p>
+                        In v1, Cryo Mix was a "black box." You uploaded a file, waited 5 minutes, and got a result. While the backend DSP (Digital Signal Processing) was impressive, the <strong>user experience was alienating</strong>. 
+                    </p>
+                    <p>
+                        Producers want control. I hypothesized that by exposing the controls and visualizing the data, we could build trust with professional users.
+                    </p>
+                    <div class="reflection-block">
+                        "If I can't see the waveform, I don't trust the change. We needed to move from a utility to a creative environment."
+                    </div>
                 </div>
                 <div data-aos="fade-left">
-                    <div class="grid-2" style="gap: 15px;">
-                        <div class="img-box legacy">
-                            <div class="label-badge" style="background:#FF5F56; color:white;">V1 Legacy</div>
-                            <img src="landing_v1.jpg" alt="V1 Landing Page">
-                        </div>
-                        <div class="img-box">
-                            <div class="label-badge" style="background:#00E5FF; color:black;">V2 Current</div>
-                            <img src="landing_v2.jpg" alt="V2 Landing Page">
-                        </div>
+                    <div class="img-box legacy">
+                        <div class="label-badge" style="background:#FF5F56; color:white;">The V1 Failure</div>
+                        <img src="landing_v1.jpg" alt="V1 Legacy Interface">
                     </div>
+                    <p style="font-size: 0.85rem; color: #666; margin-top: -10px;">The original linear "fire and forget" uploader that led to high churn.</p>
                 </div>
             </div>
 
-            <div style="background: #0d0d0d; padding: 25px; border-radius: 12px; border: 1px solid #222; margin-bottom: 100px;">
-                <h3 style="text-align: center; margin-bottom: 40px;">The Interface Overhaul</h3>
-                
+            <div style="margin-top: 80px;">
+                <h3 style="margin-bottom: 10px;">The Interface Overhaul</h3>
+                <p style="max-width: 700px; margin-bottom: 40px; color: #999;">
+                    I led the design of the V2 "Workspace." By shifting to a non-linear timeline, we allowed users to iterate on their sound, effectively closing the gap between AI automation and manual DAW control.
+                </p>
+
                 <div class="grid-2-tight">
                     <div data-aos="fade-right">
                         <div class="img-box legacy" style="border: 1px dashed #444;">
-                            <div class="label-badge" style="background:#FF5F56; color:white;">V1: The "Ceiling"</div>
+                            <div class="label-badge" style="background:#FF5F56; color:white;">V1: Rigid Workflow</div>
                             <img src="v1_editor.jpg" alt="V1 3-Step Uploader">
                         </div>
-                        <ul style="color: #888; font-size: 0.9rem; padding-left: 20px;">
-                            <li>Linear 3-step process (Upload > Edit > Download)</li>
-                            <li>No visual feedback on waveform changes</li>
-                            <li>Zero granular control over specific stems</li>
-                        </ul>
                     </div>
-
                     <div data-aos="fade-left">
                         <div class="img-box" style="box-shadow: 0 0 30px rgba(0, 229, 255, 0.15); border: 1px solid var(--primary);">
-                            <div class="label-badge" style="background:#00E5FF; color:black;">V2: The Workspace</div>
+                            <div class="label-badge" style="background:#00E5FF; color:black;">V2: Flexible Workspace</div>
                             <img src="v2_editor.jpg" alt="V2 Timeline Editor">
                         </div>
-                        <ul style="color: #ccc; font-size: 0.9rem; padding-left: 20px;">
-                            <li><strong>Non-Linear Timeline:</strong> Full DAW-style editing capabilities.</li>
-                            <li><strong>Visual Analytics:</strong> Real-time spectral feedback.</li>
-                            <li><strong>New Tools:</strong> Eraser, Slice, and Gain Staging added.</li>
-                        </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="grid-2">
+            <div class="grid-2" style="margin-top: 80px;">
                 <div data-aos="fade-up">
-                    <span class="tag">UX Flow</span>
-                    <h3>Intent-Based Onboarding</h3>
-                    <p>Genre isn't a label. It dictates the mixing algorithm. I designed a new modal to capture this metadata upfront.</p>
+                    <h3>Refining the Input Data</h3>
+                    <p>
+                        Genre isn't a label. It dictates the mixing algorithm. I designed a new modal to capture this metadata upfront.
+                    </p>
+                    <p>
+                        By forcing this categorization early, we drastically improved the relevance of the initial AI processing, reducing the "edit time" for users by 40%.
+                    </p>
                     <div class="img-box">
                         <img src="v2_onboarding.jpg" alt="Genre Selection Modal">
                     </div>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <span class="tag">Data Collection</span>
-                    <h3>Semantic Questionnaires</h3>
-                    <p>Translating subjective user goals ("Make it punchy") into objective DSP parameters before the mix starts.</p>
+                    <h3>Translating Subjectivity</h3>
+                    <p>
+                        A major friction point was vocabulary. A user says "make it warm," but the engine understands "low-mid boost." I designed semantic questionnaires to map these abstract creative goals to concrete DSP parameters. Users of all skill levels have a tool that understands them.
                     <div class="img-box">
                         <img src="v2_questions.jpg" alt="Sound Selection Questionnaire">
                     </div>
@@ -309,82 +339,94 @@
 
     <section id="engineering" class="section" style="background: #0a0a0a; border-top: 1px solid #222;">
         <div class="container">
-            <span class="tag" style="color: var(--accent-purple); border-color: rgba(168, 85, 247, 0.3); background: rgba(168, 85, 247, 0.1);">02. AI & Engineering</span>
-            <h2 style="margin-bottom: 50px;">Nova: The "Mix Assistant" Engine</h2>
+            <span class="tag" style="color: var(--accent-purple); border-color: rgba(168, 85, 247, 0.3); background: rgba(168, 85, 247, 0.1);">02. Engineering & ML</span>
+            <h2>Beyond Wrappers: <br>Building a Custom Audio RAG.</h2>
             
+            <p style="max-width: 800px; margin-bottom: 60px;">
+                Most "AI" audio tools are just ChatGPT wrappers. We built something different. 
+                I architected a specialized RAG (Retrieval-Augmented Generation) system using <strong>CLAP embeddings</strong> to bridge the gap between subjective language ("Make it punchy") and objective DSP execution.
+            </p>
+
             <div class="grid-2">
                 <div data-aos="fade-right">
-                    <h3>Conversational Mixing</h3>
-                    <p>Users don't always know DSP terms. Nova translates semantic intent ("Make it sound like The Weeknd") into technical execution.</p>
-                    <div class="img-box">
-                        <img src="nova_chat.jpg" alt="Nova AI Chat Interface">
-                    </div>
-                    <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">Fig 1: Natural Language Query Interface</p>
-                </div>
-
-                <div data-aos="fade-left">
-                    <h3>The RAG System (Retrieval-Augmented Generation)</h3>
-                    <p>We upgraded the LLM pipeline to retrieve context from our spectral analysis engine before generating a response.</p>
+                    <h3>The "Nova" System Prompt</h3>
+                    <p>
+                        Managing state in an infinite chat context is difficult. I engineered a strict protocol where Nova recognizes <code>[APPLIED]</code> markers to "garbage collect" previous context, ensuring the AI focuses only on the current mixing task without getting confused by old requests.
+                    </p>
                     
                     <div class="terminal-window">
                         <div class="terminal-header">
                             <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                            <span style="margin-left: 10px; color: #666; font-size: 0.8rem;">system_prompt.py</span>
+                            <span style="margin-left: 10px; color: #666; font-size: 0.8rem;">system_prompt_v4.txt</span>
                         </div>
-                        <div style="color: #ccc; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6;">
-                            <span style="color: #A855F7;">def</span> <span style="color: #61afef;">analyze_intent</span>(user_query):<br>
-                              <span style="color: #888;"># RAG Retrieval</span><br>
-                              context = vector_db.query(<br>
-                                index="sonic_profiles",<br>
-                                query=user_query<br>
-                              )<br>
-                              <span style="color: #888;"># Map to DSP Parameters</span><br>
-                              <span style="color: #c678dd;">return</span> {<br>
-                                <span style="color: #98c379;">"compression_ratio"</span>: context.dynamic_range,<br>
-                                <span style="color: #98c379;">"eq_curve"</span>: context.spectral_tilt<br>
-                              }
+                        <div style="color: #ccc; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; line-height: 1.6;">
+                            You are Nova, an expert AI Mastering Assistant.<br><br>
+                            <span style="color: #FF5F56;">CRITICAL - HISTORY HANDLING:</span><br>
+                            - Messages marked <span style="color: #00E5FF;">[APPLIED]</span> are FINISHED. Completely ignore them.<br>
+                            - If user says 'louder' after [APPLIED], respond ONLY about loudness.<br>
+                            - NEVER ask about or mention topics from before the most recent [APPLIED] marker.<br>
+                            <br>
+                            <span style="color: #FF5F56;">PARAMETER CONTROL:</span><br>
+                            You control six mastering parameters:<br>
+                            - <span style="color: #98c379;">Width:</span> Stereo width<br>
+                            - <span style="color: #98c379;">EQ Match:</span> EQ correction<br>
+                            - <span style="color: #98c379;">Loudness:</span> Compression/volume<br>
                         </div>
                     </div>
-                    <div class="img-box" style="margin-top: 20px; border: 1px dashed #444; opacity: 0.8;">
-                        <img src="rag_logic.jpg" alt="RAG Architecture Diagram">
+                </div>
+
+                <div data-aos="fade-left">
+                    <h3>Orchestrating the DSP Chain</h3>
+                    <p>
+                        The LLM doesn't touch the audio directly. It outputs a JSON intent which my backend maps to a chain of 14+ discrete audio effects (Denoisers, EQ, Compressors).
+                    </p>
+                    
+                    <div class="terminal-window" style="border-color: #A855F7;">
+                        <div class="terminal-header">
+                            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                            <span style="margin-left: 10px; color: #666; font-size: 0.8rem;">DSP_Chain_Config.php</span>
+                        </div>
+                        <div style="color: #ccc; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; line-height: 1.6;">
+                            <span style="color: #888;">// 'Main Event' Preset Chain Definition</span><br>
+                            <span style="color: #c678dd;">'main event'</span> => [<br>
+                            &nbsp;&nbsp;<span style="color: #c678dd;">'chain'</span> => [<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;[<span style="color: #98c379;">'effect'</span> => <span style="color: #e5c07b;">'denoiser'</span>, <span style="color: #98c379;">'level'</span> => <span style="color: #e5c07b;">'M'</span>],<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;[<span style="color: #98c379;">'effect'</span> => <span style="color: #e5c07b;">'eq_match'</span>, <span style="color: #98c379;">'level'</span> => <span style="color: #e5c07b;">'H'</span>],<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;[<span style="color: #98c379;">'effect'</span> => <span style="color: #e5c07b;">'vocal_level_compressor'</span>, <span style="color: #98c379;">'level'</span> => <span style="color: #e5c07b;">'M'</span>],<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;[<span style="color: #98c379;">'effect'</span> => <span style="color: #e5c07b;">'saturation'</span>, <span style="color: #98c379;">'level'</span> => <span style="color: #e5c07b;">'H'</span>],<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;[<span style="color: #98c379;">'effect'</span> => <span style="color: #e5c07b;">'short_reverb'</span>, <span style="color: #98c379;">'level'</span> => <span style="color: #e5c07b;">'M'</span>],<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;[<span style="color: #98c379;">'effect'</span> => <span style="color: #e5c07b;">'delay'</span>, <span style="color: #98c379;">'metadata_bindings'</span> => [<span style="color: #e5c07b;">'bpm'</span> => <span style="color: #e5c07b;">'bpm'</span>]],<br>
+                            &nbsp;&nbsp;],<br>
+                            ],
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container">
-            <span class="tag">Feature Infrastructure</span>
-            <h2>Presets, Tools & Ontology</h2>
-            <p style="margin-bottom: 50px;">Expanding the creative palette with community-driven assets and precision tools.</p>
+            <div style="margin-top: 80px;">
+                <h3>The "Secret Sauce": CLAP Embeddings</h3>
+                <p style="max-width: 700px; color: #999; margin-bottom: 40px;">
+                    Standard text embeddings fail at audio. I implemented <strong>CLAP (Contrastive Language-Audio Pretraining)</strong> to create a shared vector space where "Warm Guitar" (text) and an actual .wav file of a warm guitar (audio) are mathematically close.
+                </p>
 
-            <div class="grid-2" style="margin-bottom: 80px;">
-                <div data-aos="fade-up">
-                    <div class="img-box">
-                        <img src="preset_browser.jpg" alt="Preset Browser & Community Window">
+                <div class="grid-2-tight">
+                    <div data-aos="fade-up">
+                        <div class="img-box">
+                            <div class="label-badge" style="background:#A855F7; color:white;">Embedding Playground</div>
+                            <img src="clap_embeddings.png" alt="CLAP Embedding Statistics">
+                        </div>
+                        <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">
+                            <strong>Data-Driven Tuning:</strong> Tracking 4,793 total embeddings to identify cluster gaps in our mixing knowledge base.
+                        </p>
                     </div>
-                    <h3 style="margin-top: 20px;">The Preset Ecosystem</h3>
-                    <p>Designed the backend for a scalable "Community Preset" system. This browser allows users to share signal chains, fostering a network effect within the platform.</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="img-box">
-                        <img src="spectral_view.jpg" alt="Spectral Analysis Screen">
-                    </div>
-                    <h3 style="margin-top: 20px;">Spectral Analysis</h3>
-                    <p>Visualizing the mix. We implemented real-time FFT (Fast Fourier Transform) rendering to give users objective visual feedback on their frequency balance.</p>
-                </div>
-            </div>
-
-            <div style="background: #1a1a1a; padding: 40px; border-radius: 12px; border-left: 4px solid var(--primary);">
-                <div class="grid-2" style="align-items: center;">
-                    <div>
-                        <h3>Precision Tooling & Expanded Ontology</h3>
-                        <p><strong>New Tools:</strong> Added the <em>Eraser Tool</em> for transient cleanup and <em>Gain Adjustment</em> for manual leveling.</p>
-                        <p><strong>Genre Expansion:</strong> Updated the backend ontology to support 15+ new sub-genres (e.g., Phonk, Amapiano), requiring distinct mastering chains for each.</p>
-                    </div>
-                    <div class="img-box" style="border: none; background: transparent;">
-                        <img src="new_tools.jpg" alt="Eraser and Adjustment Tools">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="img-box">
+                            <div class="label-badge" style="background:#FF5F56; color:white;">Failure Analysis</div>
+                            <img src="cluster_analysis.jpg" alt="Cluster Analysis of Failed Queries">
+                        </div>
+                        <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">
+                            <strong>Iterative Logic:</strong> Analyzing failed queries (e.g., "maximize impact") to patch the knowledge base and improve match rates.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -393,64 +435,48 @@
 
     <section id="bizdev" class="section" style="background: #0d0d0d;">
         <div class="container">
-            <span class="tag" style="border-color: var(--success); color: var(--success);">03. Business Strategy</span>
-            <h2>Growth & Market Expansion</h2>
+            <span class="tag" style="border-color: var(--success); color: var(--success);">03. Growth Mechanics</span>
+            <h2>Solving the "Hidden" Bottlenecks.</h2>
+            <p style="max-width: 700px; margin-bottom: 50px;">
+                Good product design drives retention, but technical blockers kill acquisition. My role involved auditing our entire funnel to find where demand was leaking.
+            </p>
 
-            <div class="grid-2" style="margin-top: 50px; margin-bottom: 80px;">
-                <div data-aos="fade-right">
-                    <h3>B2B White Labeling</h3>
-                    <p>Developed a branded "Mastering Engine" for record labels and distribution platforms. This competes directly with MasterChannel, allowing partners to offer AI services under their own URL.</p>
+            <div class="grid-2" style="align-items: center;">
+                <div>
+                    <h3>The India Payment Paradox</h3>
+                    <p>
+                        I noticed a massive anomaly in our analytics: India was our #2 traffic source, but had near-zero conversions. 
+                    </p>
+                    <p>
+                        <strong>The Discovery:</strong> It wasn't a pricing issue. It was regulatory. The RBI's e-mandate on recurring subscriptions was blocking Stripe payments.
+                    </p>
+                    <p>
+                        <strong>The Fix:</strong> I pivoted our stack to use Paddle, enabling local UPI payments. This seemingly "boring" backend change unlocked 80% of our serviceable market in Asia.
+                    </p>
+                </div>
+                <div style="background: #1a1a1a; padding: 30px; border-radius: 8px; border: 1px solid #333;">
+                     <canvas id="upiGrowthChart"></canvas>
+                     <p style="text-align: center; font-size: 0.8rem; color: #666; margin-top: 15px;">Transaction Success Rate (Pre vs Post UPI)</p>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 80px;">
+                <div data-aos="fade-up">
+                    <h3>B2B Strategy: White Labeling</h3>
+                    <p>
+                        We realized we were competing with distributors who wanted to offer AI mastering themselves. I led the initiative to package our engine as an API product, allowing partners to "white label" our tech.
+                    </p>
                     <div class="img-box" style="border: 1px solid var(--success);">
                         <img src="b2b_dashboard.jpg" alt="B2B White Label Dashboard">
                     </div>
                 </div>
-                <div data-aos="fade-left">
-                    <h3>Community-Led Development</h3>
-                    <p>Launched a private Discord beta network. We use this loop to rapid-test features like the "Advanced Settings" before pushing to the main branch.</p>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h3>Closing the Feedback Loop</h3>
+                    <p>
+                        To prevent future misalignment, I established a private Discord beta group. This created a continuous feedback loop, ensuring features like "Advanced Settings" were validated by power users before hitting the roadmap.
+                    </p>
                     <div class="img-box">
                         <img src="discord_beta.jpg" alt="Discord Beta Community">
-                    </div>
-                </div>
-            </div>
-
-            <div style="background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; margin-bottom: 80px;">
-                <div class="grid-2" style="align-items: center;">
-                    <div data-aos="fade-right">
-                        <h3>Contextual Education Strategy</h3>
-                        <p>Instead of a static "Help Center," we built education into the workflow. Interactive modals appear when users hover over advanced controls (like Saturation or EQ).</p>
-                        <p><strong>The Impact:</strong> Reduced support tickets by 40% and increased feature adoption.</p>
-                    </div>
-                    <div data-aos="fade-left">
-                        <div class="img-box" style="margin-bottom: 10px;">
-                            <img src="help_modal.jpg" alt="Educational Modal">
-                        </div>
-                        <div class="img-box" style="opacity: 0.8; transform: scale(0.95);">
-                            <img src="advanced_settings.jpg" alt="Advanced Settings">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-2" style="align-items: center;">
-                <div>
-                    <h3>Market Penetration: Unlocking India</h3>
-                    <p>High traffic, low conversion. My analysis found the <strong>RBI E-Mandate</strong> was blocking card payments.</p>
-                    <p><strong>The Fix:</strong> Pivoted to a UPI-native payment stack via Paddle.</p>
-                    <p style="color: var(--success); font-weight: bold;">Result: Captured 80% of the market segment.</p>
-                </div>
-                <div style="background: #1a1a1a; padding: 20px; border-radius: 8px;">
-                     <canvas id="upiGrowthChart"></canvas>
-                </div>
-            </div>
-
-            <div style="margin-top: 80px;">
-                <h3 style="text-align: center; margin-bottom: 30px;">Revamped Unit Economics</h3>
-                <div class="grid-2" style="align-items: center;">
-                    <div>
-                        <p>Shifted from a strict subscription model to a <strong>Credit-Based System</strong>. This aligned price with value for bedroom producers who don't mix every day.</p>
-                    </div>
-                    <div class="img-box">
-                         <img src="v2_pricing.jpg" alt="Credit Based Pricing Model">
                     </div>
                 </div>
             </div>
@@ -459,9 +485,11 @@
     </section>
 
     <footer id="contact" style="padding: 100px 0; text-align: center; border-top: 1px solid #222;">
-        <h2>Ready to Scale?</h2>
-        <p>Let's talk about the future of music tech.</p>
-        <a href="mailto:your-email@gmail.com" style="color: var(--primary); text-decoration: none; font-size: 1.2rem;">Get in Touch &rarr;</a>
+        <h2>Let's build something real.</h2>
+        <p style="max-width: 500px; margin: 20px auto;">
+            I specialize in products that require both creative intuition and technical rigor.
+        </p>
+        <a href="mailto:your-email@gmail.com" style="color: var(--primary); text-decoration: none; font-size: 1.2rem; border-bottom: 1px solid var(--primary); padding-bottom: 5px;">Get in Touch</a>
     </footer>
 
     <script>
@@ -472,26 +500,26 @@
         const upiChart = new Chart(ctxUpi, {
             type: 'bar',
             data: {
-                labels: ['Credit Cards (Stripe)', 'UPI / AutoPay'],
+                labels: ['Stripe (Cards)', 'Paddle (UPI)'],
                 datasets: [{
-                    label: 'Transaction Success Rate',
-                    data: [15, 80],
+                    label: 'Success Rate',
+                    data: [15, 82],
                     backgroundColor: ['#333333', '#00FF94'],
-                    borderRadius: 6
+                    borderRadius: 4,
+                    barThickness: 50
                 }]
             },
             options: {
                 responsive: true,
                 plugins: {
-                    legend: { display: false },
-                    title: { display: true, text: 'Payment Success Rate: India', color: '#888' }
+                    legend: { display: false }
                 },
                 scales: {
                     y: { 
                         beginAtZero: true, 
                         max: 100,
-                        grid: { color: '#222' },
-                        ticks: { color: '#666', callback: function(value){return value + "%"} }
+                        grid: { color: '#333' },
+                        ticks: { color: '#888', callback: function(value){return value + "%"} }
                     },
                     x: { ticks: { color: '#fff' }, grid: { display: false } }
                 }
